@@ -1,11 +1,14 @@
 import React, {useState} from "react";
 import { Router, Switch, Route } from "react-router-dom";
-import Hamburger from "./Components/hamburgerMenu";
 import "./index.css";
+import Nav from "./Components/Navigation Bar/Nav";
+import video from "./Images/Head.mp4"
+import "./Components/video.css"
 
 export function App(){
 
     const [hamburger, setHamburger] = useState(false)
+    const [dropDown, setDropDown] = useState(false)
 
     //Universal function to toggle from true to false
     const handleToggle = (current, setter) => {
@@ -22,9 +25,14 @@ export function App(){
 
         {/* <Router>
             <Switch>
-                <Route exact path="/" component={Login} />
-                <Route path="/Classes" component={Login} />
-                <Route path="/Store" component={Login} />
+                <Route exact path="/" component={Home} />
+                <Route path="/About" component={About} />
+                <Route path="/Classes" component={Classes} />
+                <Route path="/Events" component={Events} />
+                <Route path="/Membership" component={Membership} />
+                <Route path="/Contact" component={Contact} />
+                <Route path="/Book" component={Book} />
+                <Route path="/Shop" component={Shop} />
             </Switch>
         </Router> */}
 
@@ -34,24 +42,25 @@ export function App(){
     {/* NAV BAR */ }
 
 
-            <div className="nav">
-                <h1>The Light House</h1>
-                <button className="bookClass">| Book A Class --〉|</button>
+    <Nav hamburger={hamburger} setHamburger={setHamburger} dropDown = {dropDown} setDropDown={setDropDown} handleToggle={handleToggle}/>
 
-    {/* Change this to a () ? login : profile  when integrating a 3rd party login system */ }
-                <button className="Login">Login</button>
-
-                <button className="hamburger" onClick={() => {handleToggle(hamburger, setHamburger)}}>⌯</button>
-                
-            </div>
-
-            {hamburger ? <Hamburger /> : null}
             
 
 
     { /*PAGE HEAD*/ }
+   <div className="main">
+        <video src={video} autoPlay loop muted>
+           <div className="vidText">
+                <h1>YOGA. <br/>
+                    MEDITATION.<br/>
+                    WELLBEING.
+                </h1>
+            </div> 
+        </video>
+        
+            
+    </div>
 
-
-        </div>
+    </div>
     )
 }
